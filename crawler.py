@@ -14,16 +14,15 @@ def call_crawler(date):
 
 def read_file():
 	post=[]
-	f=open("crawled.csv",'r',encoding='utf-8')
+	f=open("./fbcrawl-master/crawled.csv",'r',encoding='utf-8')
 	line=f.readline()
 	while True:
 		line=f.readline()
 		if not line: break
-		pattern=re.compile(r"(\[[^]+\])([^]+)-+ #[^]+https://talkyou",re.DOTALL)
-		tmp=line.match(pattern)
-		name=tmp.group(1)
-		text=tmp.group(2)
-		post.append([name,text])
+		name=line.split('[')
+		name=name[1].split(']')
+		text=name[1].split("----------")
+		post.append([name[0],text[0]])
 	f.close()
 	return post
 
@@ -35,6 +34,6 @@ if __name__=="__main__":
 #	date=datetime.datetime.now()
 #	call_crawler(date.strftime("%Y-%m-%d"))
 	post=read_file()
-	os.remove("crawled.csv")
-	os.chdir(nowdir)
+#	os.remove("./fbcrawl-master/crawled.csv")
+#	os.chdir(nowdir)
 	debug(post)
