@@ -34,7 +34,7 @@ def main():
 
     contents = "test notification"
     bot.sendMessage(chat_id=chat_id, text="Hello! I am KAIST message delivering service")
-    bot.sendMessage(chat_id=chat_id, text="I have 3 category: marketing, loss, love")
+    bot.sendMessage(chat_id=chat_id, text="I support 3 category: marketing, loss, love")
     bot.sendMessage(chat_id=chat_id, text="You can set category that you want to receive using keyword: !set")
     bot.sendMessage(chat_id=chat_id, text="ex) !set loss")
 
@@ -63,13 +63,13 @@ def set_option(bot):
             message = update.message.text.lower()
             print(message)
             if message == "!set marketing":
-                update.message.reply_text("Ok we'll send information about marketing")
+                update.message.reply_text("Ok I'll send information about marketing")
                 return "marketing"
             elif message == "!set love":
-                update.message.reply_text("Ok we'll send information about love")
+                update.message.reply_text("Ok I'll send information about love")
                 return "love"
             elif message == "!set loss":
-                update.message.reply_text("Ok we'll send information about loss")
+                update.message.reply_text("Ok I'll send information about loss")
                 return "loss"
             else:
                 update.message.reply_text("I can't understand your message!")
