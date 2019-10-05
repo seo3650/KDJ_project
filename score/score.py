@@ -67,8 +67,8 @@ def preprocess(title, body):
     :param body: The body of an article
     :return: processed inputs
     """
-    #title = timeprocess(title)
-    #body = timeprocess(body)
+    title = timeprocess(title)
+    body = timeprocess(body)
 
     okt = konlpy.tag.Okt()
     pro_title = okt.morphs(title, norm=True, stem=True)
@@ -76,10 +76,23 @@ def preprocess(title, body):
     return pro_title, pro_body
 
 def timeprocess(text):
-    day_pattern = ''
-    pass
+    day_pattern_1 = re.compile(r'(?P<month>[0-9]+)/(?P<date>[0-9]+)', re.DOTALL)
+    day_pattern_2 = re.compile(r'(?P<month>[0-9]+)\s*월\s*(?P<date>[0-9]+)\s*일', re.DOTALL)
+    day_pattern_3 = re.compile(r'(?P<date>[0-9]+)\s*일', re.DOTALL)
+    time_pattern_1 = re.compile(r'(?P<hour>[0-9]+)\s*:\s*(?P<minute>[0-9]+)', re.DOTALL)
+    time_pattern_2 = re.compile(r'(?P<hour>[0-9]+)\s*시\s*(?P<minute>[0-9]+)\s*분', re.DOTALL)
+    time_pattern_3 = re.compile(r'(?P<hour>[0-9]+)\s*시', re.DOTALL)
+
+    text = day_pattern_1.sub(r'\g<month> 월 \g<date> 일', text)
+    text = day_pattern_2.sub(r'\g<month> 월 \g<date> 일', text)
+    text = day_pattern_3.sub(r'\g<date> 일', text)
+    text = time_pattern_1.sub(r'\g<hour> 시 \g<minute> 분', text)
+    text = time_pattern_2.sub(r'\g<hour> 시 \g<minute> 분', text)
+    text = time_pattern_3.sub(r'\g<hour> 시', text)
+    print(text)
+    return text
 
 if __name__ == '__main__':
     title = '아이패드 분실'
-    body = '아이패드를 잃어버렸어요..... 찾게 도와주세요 ㅠㅠㅠㅠㅠㅠ'
+    body = '9월 22일에 아이패드를 잃어버렸어요..... 찾게 도와주세요 ㅠㅠㅠㅠㅠㅠ'
     print(score_with_word(title, body, keyword=key_list[0]))
