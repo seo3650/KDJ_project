@@ -33,9 +33,9 @@ def debug(post):
 
 if __name__=="__main__":
 #	while True:
-	nowdir=os.getcwd()
-	date=datetime.datetime.now()
-	call_crawler(date.strftime("%Y-%m-%d"))
+#	nowdir=os.getcwd()
+#	date=datetime.datetime.now()
+#	call_crawler(date.strftime("%Y-%m-%d"))
 	post=read_file()
 	os.remove("crawled.csv")
 	os.chdir(nowdir)
