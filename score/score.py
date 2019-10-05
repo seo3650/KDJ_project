@@ -1,16 +1,23 @@
+# -*- coding=utf-8 -*-
 import konlpy
+import re
 
 #test: input string is came
 
-title = '안녕하세요'
-body = '인생 족같다'
+"""
+Define Constant
+"""
+
+threshold = 0.1
 
 key_list = ['loss', 'marketing', 'love']
-loss_list = [u'분실', u'습득', u'잃다', u'잃어버리다', u'찾다', u'ㅠㅠ', u'ㅠㅠ', u'ㅠ']
+loss_list = [u'분실', u'습득', u'잃다', u'잃어버리다', u'찾다', u'ㅠㅠ', u'ㅠㅠ', u'ㅠ', u'도와주다']
 market_list = [u'월', u'일', u'시', u'모집', u'면접', u'행사', u'오전', u'오후']
 love_list = [u'좋다', u'좋아하다', u'사랑', u'짝사랑', u'연애', u'썸', u'심장']
 
 word_dict = {'loss': loss_list, 'marketing': market_list, 'love': love_list}
+
+
 
 def score_with_word(title, body, keyword):
     """
@@ -34,7 +41,7 @@ def score_with_word(title, body, keyword):
             index = word2index.get(voca)
             # 재등장하는 단어의 인덱스를 받아옵니다.
             bow[index] = bow[index] + 1
-    for voca in pro_title
+    for voca in pro_title:
         if voca in word2index.keys():
             index = word2index.get(voca)
             bow[index] = bow[index] + 1
@@ -46,7 +53,11 @@ def score_with_word(title, body, keyword):
         if word in word2index:
             score += word2index[word]
 
-    return score
+    total = sum(word2index.values())
+    if (score/total) > threshold:
+        return True
+    else:
+        return False
 
 
 
@@ -56,11 +67,19 @@ def preprocess(title, body):
     :param body: The body of an article
     :return: processed inputs
     """
+    #title = timeprocess(title)
+    #body = timeprocess(body)
+
     okt = konlpy.tag.Okt()
     pro_title = okt.morphs(title, norm=True, stem=True)
     pro_body = okt.morphs(body, norm=True, stem=True)
     return pro_title, pro_body
 
+def timeprocess(text):
+    day_pattern = ''
+    pass
 
 if __name__ == '__main__':
-    score_with_word(title, body, keyword='차')
+    title = '아이패드 분실'
+    body = '아이패드를 잃어버렸어요..... 찾게 도와주세요 ㅠㅠㅠㅠㅠㅠ'
+    print(score_with_word(title, body, keyword=key_list[0]))
