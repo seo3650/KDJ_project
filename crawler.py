@@ -18,7 +18,7 @@ def read_file():
 	while True:
 		line=f.readline()
 		if not line: break
-		pattern=re.compile(r".\[\S+\]\S+----------",re.DOTALL)
+		pattern=re.compile("\[[^]+\])([^]+)-+ #[^]+https://talkyou",re.DOTALL)
 		tmp=line.match(pattern)
 		name=tmp.group(1)
 		text=tmp.group(2)
@@ -37,6 +37,6 @@ if __name__=="__main__":
 	os.remove("crawled.csv")
 	os.chdir(nowdir)
 	print(os.getcwd())
-#	post=read_file()
-
+	post=read_file()
+	debug(post)
 #		time.sleep(360)
