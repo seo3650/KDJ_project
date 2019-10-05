@@ -14,15 +14,19 @@ def call_crawler(date):
 
 def read_file():
 	post=[]
-	f=open("./fbcrawl-master/crawled.csv",'r',encoding='utf-8')
+	f=open("crawled.csv",'r',encoding='utf-8')
 	line=f.readline()
 	while True:
 		line=f.readline()
+		if "source,shared_from,date,text,reactions,likes,ahah,love,wow,sigh,grrr,comments,post_id,url" in line: continue
 		if not line: break
-		name=line.split('[')
-		name=name[1].split(']')
-		text=name[1].split("----------")
-		post.append([name[0],text[0]])
+		try:
+			name=line.split('[')
+			name=name[1].split(']')
+			text=name[1].split("----------")
+			post.append([name[0],text[0]])
+		except:
+			print(name)
 	f.close()
 	return post
 
@@ -30,10 +34,12 @@ def debug(post):
 	print(post)
 
 if __name__=="__main__":
-#	nowdir=os.getcwd()
-#	date=datetime.datetime.now()
-#	call_crawler(date.strftime("%Y-%m-%d"))
+	nowdir=os.getcwd()
+	date=datetime.datetime.now()
+	call_crawler(date.strftime("%Y-%m-%d"))
 	post=read_file()
-#	os.remove("./fbcrawl-master/crawled.csv")
-#	os.chdir(nowdir)
-	debug(post)
+	os.remove("crawled.csv")
+	os.chdir(nowdir)
+
+
+#	debug(post)
