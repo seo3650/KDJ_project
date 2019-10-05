@@ -5,6 +5,8 @@ import re
 import datetime
 import os
 
+#To run this program, You need To 'pip install' scrapy, datetime
+
 def call_crawler(date):
 	os.chdir(os.getcwd()+"\\fbcrawl-master")
 	subprocess.run(["scrapy", "crawl", "fb", "-a", "email=kjune03223@gmail.com", "-a", "password=kadaejeon", "-a", "page=KaDaejeon", "-a", "date="+date, "-a", "lang=en", "-o", "crawled.csv"])
