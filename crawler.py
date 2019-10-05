@@ -1,5 +1,4 @@
 #facebook crawling and return post name/text
-import time
 import subprocess
 import re
 import datetime
@@ -32,7 +31,6 @@ def debug(post):
 	print(post)
 
 if __name__=="__main__":
-#	while True:
 #	nowdir=os.getcwd()
 #	date=datetime.datetime.now()
 #	call_crawler(date.strftime("%Y-%m-%d"))
@@ -40,4 +38,3 @@ if __name__=="__main__":
 	os.remove("crawled.csv")
 	os.chdir(nowdir)
 	debug(post)
-#		time.sleep(360)
