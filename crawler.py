@@ -8,7 +8,7 @@ import os
 
 def call_crawler(date):
 	os.chdir(os.getcwd()+r"/fbcrawl-master")
-	subprocess.run(["scrapy", "crawl", "fb", "-a", "email=kjune03223@gmail.com", "-a", "password=kadaejeon", "-a", "page=KaDaejeon", "-a", "date="+date, "-a", "lang=en", "-o", "crawled.csv"])
+	subprocess.run(["scrapy", "crawl", "fb", "-a", "email=your_email", "-a", "password=your_password", "-a", "page=KaDaejeon", "-a", "date="+date, "-a", "lang=en", "-o", "crawled.csv"])
 #	subprocess.run(["scrapy crawl fb -a email=\"01028233991\" -a password=\"wnsdn12\" -a page=\"KaDaejeon\" -a date=\""+date+	"\" -a lang=\"en\" -o=\"crawled.csv\""])
 	return
 
