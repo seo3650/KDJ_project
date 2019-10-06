@@ -11,7 +11,7 @@ from time import sleep
 
 update_id = None
 
-def main(option):
+def main(option, contents):
     bot = telegram.Bot('982782338:AAHKjHSLHUawMesQHFgs9zcOHXo-V1sdLeg')
     chat_id = 677916148
     if option == "initial":
@@ -43,10 +43,10 @@ def main(option):
             # The user has removed or blocked the bot.
             update_id += 1
     elif option == "notify":
-        notification(bot, chat_id)
+        notification(bot, chat_id, contents)
 
-def notification(bot, chat_id):
-    bot.sendMessage(chat_id=chat_id, text="new article is updated!")
+def notification(bot, chat_id, contents):
+    bot.sendMessage(chat_id=chat_id, text=contents)
 
 
 

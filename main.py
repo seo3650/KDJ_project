@@ -5,13 +5,19 @@ import crawler as crawler
 from time import sleep
 import re
 
+option = notification.main("initial", "")
 
 while True:
+
+    print("option: " + option)
     contents = crawler.main()
     print(contents)
     scores = []
     for article in contents:
-        scores.append(score.score_with_word(article[0], article[1], 'loss'))
+        signal = score.score_with_word(article[0], article[1], option)
+        scores.append(signal) #?
+        if signal:
+            notification.main("notify", article[0])
     print(scores)
-    notification.notification(scores)
+    #notification.main("notify")
     sleep(10)
