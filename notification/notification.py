@@ -73,7 +73,3 @@ def set_option(bot):
                 return "loss"
             else:
                 update.message.reply_text("I can't understand your message!")
-
-
-if __name__ == '__main__':
-    main()
