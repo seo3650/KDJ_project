@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2d6ab78d-2fbb-4f34-9779-2e8c9fa61ecf" name="Default" comment="">
+    <list default="true" id="2d6ab78d-2fbb-4f34-9779-2e8c9fa61ecf" name="Default" comment="good to crawler">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawler.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/score/score.py" beforeDir="false" afterPath="$PROJECT_DIR$/score/score.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -170,6 +171,14 @@
       <option name="presentableId" value="Default" />
       <updated>1570328865531</updated>
     </task>
+    <task id="LOCAL-00001" summary="good to crawler">
+      <created>1570329166650</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1570329166650</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -182,5 +191,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="good to crawler" />
+    <option name="LAST_COMMIT_MESSAGE" value="good to crawler" />
   </component>
 </project>

@@ -91,8 +91,3 @@ def timeprocess(text):
     text = time_pattern_3.sub(r'\g<hour> 시', text)
     print(text)
     return text
-
-if __name__ == '__main__':
-    title = '아이패드 분실'
-    body = '9월 22일에 아이패드를 잃어버렸어요..... 찾게 도와주세요 ㅠㅠㅠㅠㅠㅠ'
-    print(score_with_word(title, body, keyword=key_list[0]))
