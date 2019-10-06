@@ -35,14 +35,13 @@ def main(option):
         bot.sendMessage(chat_id=chat_id, text="I support 3 category: marketing, loss, love")
         bot.sendMessage(chat_id=chat_id, text="You can set category that you want to receive using keyword: !set")
         bot.sendMessage(chat_id=chat_id, text="ex) !set loss")
-        while True:
-            try:
-                return set_option(bot)
-            except NetworkError:
-                sleep(1)
-            except Unauthorized:
-                # The user has removed or blocked the bot.
-                update_id += 1
+        try:
+            return set_option(bot)
+        except NetworkError:
+            sleep(1)
+        except Unauthorized:
+            # The user has removed or blocked the bot.
+            update_id += 1
     elif option == "notify":
         notification(bot, chat_id)
 
