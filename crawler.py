@@ -33,7 +33,7 @@ def read_file():
 def debug(post):
 	print(post)
 
-if __name__=="__main__":
+def main():
 	nowdir=os.getcwd()
 	date=datetime.datetime.now()
 	call_crawler(date.strftime("%Y-%m-%d"))

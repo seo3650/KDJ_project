@@ -12,7 +12,7 @@ from time import sleep
 update_id = None
 
 
-def main():
+def notification(contents):
     """Run the bot."""
     global update_id
     # Telegram Bot Authorization Token
