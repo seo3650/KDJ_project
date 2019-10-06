@@ -11,44 +11,44 @@ from time import sleep
 
 update_id = None
 
-
-def notification(contents):
-    """Run the bot."""
-    global update_id
-    # Telegram Bot Authorization Token
+def main(option):
     bot = telegram.Bot('982782338:AAHKjHSLHUawMesQHFgs9zcOHXo-V1sdLeg')
-
-    # get the first pending update_id, this is so we can skip over it in case
-    # we get an "Unauthorized" exception.
-    try:
-        update_id = bot.get_updates()[0].update_id
-    except IndexError:
-        update_id = None
-
-    logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-
-    signal = True # send notification?
-
-    # bot send notification to latest person
     chat_id = 677916148
+    if option == "initial":
+        global update_id
+        # Telegram Bot Authorization Token
 
-    contents = "test notification"
-    bot.sendMessage(chat_id=chat_id, text="Hello! I am KAIST message delivering service")
-    bot.sendMessage(chat_id=chat_id, text="I support 3 category: marketing, loss, love")
-    bot.sendMessage(chat_id=chat_id, text="You can set category that you want to receive using keyword: !set")
-    bot.sendMessage(chat_id=chat_id, text="ex) !set loss")
 
-    while True:
+        # get the first pending update_id, this is so we can skip over it in case
+        # we get an "Unauthorized" exception.
         try:
-            category_option = set_option(bot)
-        except NetworkError:
-            sleep(1)
-        except Unauthorized:
-            # The user has removed or blocked the bot.
-            update_id += 1
-        if signal:
-            print(contents)
-            bot.sendMessage(chat_id=chat_id, text=contents)
+            update_id = bot.get_updates()[0].update_id
+        except IndexError:
+            update_id = None
+
+        logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+        # bot send notification to latest person
+
+
+        bot.sendMessage(chat_id=chat_id, text="Hello! I am KAIST message delivering service")
+        bot.sendMessage(chat_id=chat_id, text="I support 3 category: marketing, loss, love")
+        bot.sendMessage(chat_id=chat_id, text="You can set category that you want to receive using keyword: !set")
+        bot.sendMessage(chat_id=chat_id, text="ex) !set loss")
+        while True:
+            try:
+                return set_option(bot)
+            except NetworkError:
+                sleep(1)
+            except Unauthorized:
+                # The user has removed or blocked the bot.
+                update_id += 1
+    elif option == "notify":
+        notification(bot, chat_id)
+
+def notification(bot, chat_id):
+    bot.sendMessage(chat_id=chat_id, text="new article is updated!")
+
 
 
 def set_option(bot):
