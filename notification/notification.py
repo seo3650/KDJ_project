@@ -27,7 +27,7 @@ def main(option, contents):
             update_id = None
 
         logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-
+        update_id += 1
         # bot send notification to latest person
 
 
@@ -46,7 +46,7 @@ def main(option, contents):
         notification(bot, chat_id, contents)
 
 def notification(bot, chat_id, contents):
-    bot.sendMessage(chat_id=chat_id, text=contents)
+    bot.sendMessage(chat_id=chat_id, text="new article is updated about " + contents)
 
 
 
