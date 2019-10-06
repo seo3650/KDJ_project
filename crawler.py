@@ -40,6 +40,7 @@ def main():
 	post=read_file()
 	os.remove("crawled.csv")
 	os.chdir(nowdir)
+	return post
 
 
 #	debug(post)
