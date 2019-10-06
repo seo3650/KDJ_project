@@ -16,5 +16,4 @@ while True:
         signal = score.score_with_word(article[0], article[1], option)
         if signal:
             notification.main("notify", article[0])
-    #notification.main("notify")
-    sleep(10)
+    sleep(24*60*60)

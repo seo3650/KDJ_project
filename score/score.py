@@ -12,7 +12,7 @@ threshold = 0.1
 
 key_list = ['loss', 'marketing', 'love']
 loss_list = [u'분실', u'습득', u'잃다', u'잃어버리다', u'찾다', u'ㅠㅠ', u'ㅠㅠ', u'ㅠ', u'도와주다']
-market_list = [u'월', u'일', u'시', u'모집', u'면접', u'행사', u'오전', u'오후']
+market_list = [u'월', u'일', u'시', u'모집', u'면접', u'행사', u'오전', u'오후', u'공연']
 love_list = [u'좋다', u'좋아하다', u'사랑', u'짝사랑', u'연애', u'썸', u'심장']
 
 word_dict = {'loss': loss_list, 'marketing': market_list, 'love': love_list}
